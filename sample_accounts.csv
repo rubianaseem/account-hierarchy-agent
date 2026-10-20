@@ -1,0 +1,9 @@
+Account ID,Account Name,Website,Account Owner,Billing Country,Parent Account ID,Open Opportunities,Enriched Parent Name,Enriched Parent Domain
+A001,Northwind Holdings plc,https://www.northwindholdings.example,Priya Shah,United Kingdom,,1,Northwind Holdings plc,northwindholdings.example
+A002,Northwind Logistics GmbH,northwind-logistics.example,Tom Becker,Germany,,0,Northwind Holdings plc,www.northwindholdings.example/
+A003,Northwind Retail Ltd,www.northwindretail.example,Priya Shah,United Kingdom,,0,Northwind Holdings,https://northwindholdings.example
+A004,Acme Corporation,acme.example,Sam Lee,United States,,2,,
+A005,ACME Corp (EMEA),acme-emea.example,Jordan Ellis,United Kingdom,,1,Acme Corp.,
+A006,Bluebird Health Inc,bluebirdhealth.example,Sam Lee,United States,,0,Halcyon Group,halcyongroup.example
+A007,Halcyon Labs,halcyonlabs.example,Jordan Ellis,United States,,1,Halcyon Group,halcyongroup.example
+A008,Fabrikam Ltd,fabrikam.example,Priya Shah,United Kingdom,A004,0,Contoso Group,contoso.example

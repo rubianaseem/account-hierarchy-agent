@@ -1,0 +1,2 @@
+# Optional: only used when ANTHROPIC_API_KEY is set. The agent runs without it.
+anthropic>=0.40.0
