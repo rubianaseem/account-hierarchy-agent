@@ -14,7 +14,7 @@ If you can create a repo but aren't sure where you actually *run* this, here's t
 
 1. **GitHub** is where the code lives. Copy it to your laptop with `git clone https://github.com/rubianaseem/account-hierarchy-agent.git`, or click **Code → Download ZIP** and unzip it.
 2. **Your CRM and enrichment tool** are where the input comes from. Export your accounts (Salesforce report or HubSpot company export) with the parent name and parent domain columns your enrichment tool (Clay, ZoomInfo, Apollo, D&B and so on) gives you, saved as one CSV. [SETUP.md](../SETUP.md#5-run-it-on-your-real-accounts) has the steps.
-3. **Terminal** (Mac Terminal, or the terminal inside Cursor) is where you run the script on that CSV. Set it up once, then run `python agent.py --input your_file.csv` (see [Quick start](../README.md#-quick-start)).
+3. **Terminal** (Mac Terminal, or the terminal inside Cursor) is where you run the script on that CSV. Set it up once, then run `python agent.py --input your_file.csv` (see [Quick start](../README.md#quick-start)).
 4. **Claude is optional.** With no API key the agent uses its built-in matching rules. If you add an Anthropic API key to `.env`, Claude gives a second opinion on each row marked *review* and writes the summary in plain English. It still runs in the terminal. You don't open the Claude app or paste anything into a chat, and Claude never changes the decision on its own.
 5. **You, then your CRM.** Open `out/hierarchy_brief.md`, decide the *review* rows and the ownership questions with sales leadership, create any missing parents, then import `out/parent_updates_import.csv` yourself (Salesforce Data Loader, or HubSpot's parent/child company associations; steps in [SETUP.md](../SETUP.md#6-write-the-links-into-your-crm-yourself)). Owner changes are yours to make after that conversation.
 
@@ -135,13 +135,13 @@ A002,A001,Northwind Logistics GmbH,Northwind Holdings plc,domain
 A003,A001,Northwind Retail Ltd,Northwind Holdings plc,domain
 ```
 
-## 💷 Cost (estimate)
+## Cost (estimate)
 
 - **Without an API key:** free. It's plain Python running on your laptop.
 - **With `ANTHROPIC_API_KEY`:** Claude is only called for rows marked *review*, plus one call for the summary. Domain matches, unchanged rows and missing parents never go to Claude. My rough estimate, based on [Anthropic's list pricing](https://platform.claude.com/docs/en/about-claude/pricing) for Claude Sonnet 5.5 ($2 per million input tokens, $10 per million output tokens) and about 300 input and 80 output tokens per call, is well under a US cent per call, so a few hundred review rows should cost cents rather than dollars. I haven't measured it on a large real export, so treat it as a ballpark. `--max-llm-rows` (default 50) caps how many rows go to Claude per run.
 - **Your enrichment tool:** getting parent data for thousands of accounts may use credits in Clay, ZoomInfo or similar. Check that cost before you enrich, not after.
 
-## 🔁 Stack swap table
+## Stack swap table
 
 | Layer | In this repo | Swap for |
 |---|---|---|
@@ -152,7 +152,7 @@ A003,A001,Northwind Retail Ltd,Northwind Holdings plc,domain
 | Output | Local CSV + Markdown | Salesforce Data Loader job, HubSpot associations API, a Slack thread per ownership conflict |
 | Orchestration | You run it | n8n / Make / Zapier on a schedule, or after each enrichment refresh |
 
-## 🛠 Customise it for your stack
+## Customise it for your stack
 
 Everything you'll want to tune is at the top of `agent.py` or in `.env`:
 
@@ -163,7 +163,7 @@ Everything you'll want to tune is at the top of `agent.py` or in `.env`:
 - **`OWNERSHIP_RULE`** (in `.env`): `parent_wins` (default) or `flag_only`
 - **Open deals rule:** in `ownership_checks`. My default keeps the current rep on any account with open deals and turns the move into a conversation. Change it if your policy says otherwise
 
-## 🧭 How this runs today (and what production would add)
+## How this runs today (and what production would add)
 
 I want to be straight about what this is: a working **matching and review tool you run on a file**, not a hierarchy management platform.
 
@@ -184,7 +184,7 @@ I want to be straight about what this is: a working **matching and review tool y
 - An alias table that learns from your review decisions, so the same match isn't asked twice
 - One owner in RevOps for the hierarchy rules, agreed with sales leadership
 
-## 📁 What's in the repo
+## What's in the repo
 
 ```
 account-hierarchy-agent/

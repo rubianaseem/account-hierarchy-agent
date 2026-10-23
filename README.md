@@ -1,4 +1,4 @@
-# 🌳 Account Hierarchy Agent
+# Account Hierarchy Agent
 
 **Link every subsidiary to the right parent account, and see where one company is split across several reps.**
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 🧠 The pain point
+## The pain point
 
 Your enrichment tool knows that Northwind Logistics GmbH belongs to Northwind Holdings. Your CRM doesn't. So the parent goes to one rep, the subsidiary to another, and nobody sees the whole account. Filling in Parent Account by hand doesn't scale, and loose name matching writes the wrong parent just often enough that nobody trusts it.
 
@@ -15,7 +15,7 @@ Your enrichment tool knows that Northwind Logistics GmbH belongs to Northwind Ho
 
 ---
 
-## ✨ What it does
+## What it does
 
 - **Matches parents the reliable way first:** normalised domain, then the cleaned-up company name, then a fuzzy name match as a last resort
 - **Only domain matches go in the import file.** Name-only and fuzzy matches go to *review*, because the wrong parent is worse than no parent
@@ -26,7 +26,7 @@ Your enrichment tool knows that Northwind Logistics GmbH belongs to Northwind Ho
 
 ---
 
-## 🗺 Where each step runs
+## Where each step runs
 
 1. **GitHub** holds the code. Clone it or click **Code → Download ZIP**.
 2. **Your CRM and enrichment tool** give you the input: one CSV of accounts with the parent name and domain from enrichment.
@@ -38,7 +38,7 @@ Your enrichment tool knows that Northwind Logistics GmbH belongs to Northwind Ho
 
 ---
 
-## 🚀 Quick start
+## Quick start
 
 ```bash
 git clone https://github.com/rubianaseem/account-hierarchy-agent.git
@@ -52,7 +52,7 @@ Use your own file with `python agent.py --input ~/Downloads/accounts_with_parent
 
 ---
 
-## 📟 Example output
+## Example output
 
 On `sample_accounts.csv` (8 fictional accounts), with no API key:
 
@@ -70,7 +70,7 @@ SUMMARY
 
 ---
 
-## 📚 More
+## More
 
 - [SETUP.md](SETUP.md): Claude, running it on your real accounts, writing the links into your CRM, extending it, troubleshooting
 - [docs/DETAILS.md](docs/DETAILS.md): all the pain-point quotes, full feature list and example output, cost, stack swap table, customising, how this runs today vs production, and what's in the repo
